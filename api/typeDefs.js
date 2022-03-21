@@ -12,6 +12,11 @@ const typeDefs = gql`
 		password: String!
 	}
 
+	input createPostInput {
+		title: String!
+		body: String
+	}
+
 	type User {
 		id: Int
 		firstname: String
@@ -20,13 +25,21 @@ const typeDefs = gql`
 		jwt: String
 	}
 
+	type Post {
+		title: String
+		body: String
+	}
+
 	type Query {
 		sayHi: String
 		users: [User]
+		posts: [Post]
 	}
 	type Mutation {
 		createUser(input: createUserInput): User
 		login(input: loginInput): User
+
+		createPost(input: createPostInput): Post
 	}
 `;
 
